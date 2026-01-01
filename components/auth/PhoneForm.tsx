@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import CustomButton from "../ui/CustomButton";
 
 export default function PhoneForm() {
@@ -12,7 +12,17 @@ export default function PhoneForm() {
         </Text>
       </View>
       <View style={styles.box2}>
-        <Text>Phone Number</Text>
+        <View style={styles.countryCode}>
+          <Image source={require("../../assets/project/images/flag.png")} />
+          <Text style={styles.code}>+91</Text>
+        </View>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="Enter phone number"
+            keyboardType="phone-pad"
+          />
+        </View>
       </View>
       <View style={styles.box3}>
         <View style={styles.lineContainer}>
@@ -60,16 +70,44 @@ const styles = StyleSheet.create({
     marginHorizontal: 2,
   },
   box2: {
+    flexDirection: "row",
+    justifyContent: "space-around",
     height: 57,
-    borderColor: "black",
-    borderWidth: 1,
     marginTop: 32,
-    marginHorizontal: 10,
+    marginHorizontal: 16,
+  },
+  countryCode: {
+    flexDirection: "row",
+    justifyContent: "center",
+    alignItems: "center",
+    gap: 2,
+    backgroundColor: "#E6E8EB",
+    borderRadius: 12,
+    paddingHorizontal: 12,
+    marginVertical: 2,
+  },
+  code: {
+    fontSize: 16,
+    fontWeight: 400,
+    marginLeft: 3,
+  },
+  inputContainer: {
+    justifyContent: "center",
+    backgroundColor: "#E6E8EB",
+    borderRadius: 12,
+    width: "76%",
+    marginVertical: 2,
+    marginHorizontal: 12,
+  },
+  input: {
+    fontSize: 16,
+    paddingLeft: 16,
+    paddingVertical: 12,
   },
   box3: {
     position: "absolute",
     width: "95%",
-    bottom: 0,
+    bottom: 20,
     marginHorizontal: 12,
     gap: 12,
   },
