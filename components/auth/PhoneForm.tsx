@@ -1,6 +1,13 @@
 import React from "react";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Image,
+  StyleSheet,
+  Text,
+  TextInput,
+  View
+} from "react-native";
 import CustomButton from "../ui/CustomButton";
+import KeyboardWrapper from "./KeyboardWrapper";
 
 export default function PhoneForm() {
   return (
@@ -24,27 +31,33 @@ export default function PhoneForm() {
           />
         </View>
       </View>
-      <View style={styles.box3}>
-        <View style={styles.lineContainer}>
-          <Text style={[styles.lineText, { opacity: 0.4 }]}>
-            By tapping continue, you are agreeing to our
-          </Text>
-          <View style={{ flexDirection: "row" }}>
-            <Text style={[styles.lineText, { opacity: 0.6 }]}>
-              Terms of Service
+      <KeyboardWrapper>
+        <View style={styles.box3}>
+          <View style={styles.lineContainer}>
+            <Text style={[styles.lineText, { opacity: 0.4 }]}>
+              By tapping continue, you are agreeing to our
             </Text>
-            <Text style={[styles.lineText, { opacity: 0.4 }]}> and </Text>
-            <Text style={[styles.lineText, { opacity: 0.6 }]}>
-              Privacy Policy
-            </Text>
+            <View style={{ flexDirection: "row", flexWrap: "wrap" }}>
+              <Text style={[styles.lineText, { opacity: 0.6 }]}>
+                Terms of Service
+              </Text>
+              <Text style={[styles.lineText, { opacity: 0.4 }]}> and </Text>
+              <Text style={[styles.lineText, { opacity: 0.6 }]}>
+                Privacy Policy
+              </Text>
+            </View>
+          </View>
+          <View style={styles.button}>
+            <CustomButton
+              background="#3475DE"
+              text="#FFFFFF"
+              onPress={() => {}}
+            >
+              Continue
+            </CustomButton>
           </View>
         </View>
-        <View style={styles.button}>
-          <CustomButton background="#3475DE" text="#FFFFFF" onPress={() => {}}>
-            Continue
-          </CustomButton>
-        </View>
-      </View>
+      </KeyboardWrapper>
     </View>
   );
 }
@@ -106,17 +119,18 @@ const styles = StyleSheet.create({
   },
   box3: {
     position: "absolute",
+    bottom: 0,
     width: "95%",
-    bottom: 20,
     marginHorizontal: 12,
     gap: 12,
+    paddingBottom: 20,
   },
   lineContainer: {
     alignItems: "center",
   },
   lineText: {
     fontSize: 14,
-    fontWeight: 400,
+    fontWeight: "400",
     color: "#000000",
   },
   button: {},
