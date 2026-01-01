@@ -1,0 +1,85 @@
+import React from "react";
+import { StyleSheet, Text, View } from "react-native";
+import CustomButton from "../ui/CustomButton";
+
+export default function PhoneForm() {
+  return (
+    <View style={styles.container}>
+      <View style={styles.box1}>
+        <Text style={styles.title}>What is your number?</Text>
+        <Text style={styles.description}>
+          We&apos;ll send your a verification code
+        </Text>
+      </View>
+      <View style={styles.box2}>
+        <Text>Phone Number</Text>
+      </View>
+      <View style={styles.box3}>
+        <View style={styles.lineContainer}>
+          <Text style={[styles.lineText, { opacity: 0.4 }]}>
+            By tapping continue, you are agreeing to our
+          </Text>
+          <View style={{ flexDirection: "row" }}>
+            <Text style={[styles.lineText, { opacity: 0.6 }]}>
+              Terms of Service
+            </Text>
+            <Text style={[styles.lineText, { opacity: 0.4 }]}> and </Text>
+            <Text style={[styles.lineText, { opacity: 0.6 }]}>
+              Privacy Policy
+            </Text>
+          </View>
+        </View>
+        <View style={styles.button}>
+          <CustomButton background="#3475DE" text="#FFFFFF" onPress={() => {}}>
+            Continue
+          </CustomButton>
+        </View>
+      </View>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+  },
+  box1: {
+    height: 57,
+    marginTop: 80,
+    marginHorizontal: 30,
+    gap: 6,
+  },
+  title: {
+    fontSize: 24,
+    fontWeight: "500",
+  },
+  description: {
+    fontSize: 16,
+    fontWeight: 400,
+    opacity: 0.4,
+    marginHorizontal: 2,
+  },
+  box2: {
+    height: 57,
+    borderColor: "black",
+    borderWidth: 1,
+    marginTop: 32,
+    marginHorizontal: 10,
+  },
+  box3: {
+    position: "absolute",
+    width: "95%",
+    bottom: 0,
+    marginHorizontal: 12,
+    gap: 12,
+  },
+  lineContainer: {
+    alignItems: "center",
+  },
+  lineText: {
+    fontSize: 14,
+    fontWeight: 400,
+    color: "#000000",
+  },
+  button: {},
+});

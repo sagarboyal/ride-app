@@ -1,10 +1,7 @@
+import LoginScreen from '@/app/screens/LoginScreen'
 import React from 'react'
-import { Text, View } from 'react-native'
+
 
 export default function login() {
-  return (
-    <View>
-      <Text>login</Text>
-    </View>
-  )
+  return <LoginScreen/>
 }
