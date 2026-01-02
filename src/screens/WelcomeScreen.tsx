@@ -1,60 +1,59 @@
 import CustomButton from "@/src/components/ui/CustomButton";
 import { useRouter } from "expo-router";
 import React from "react";
-import { Image, StyleSheet, Text, View } from "react-native";
+import { ImageBackground, StyleSheet, Text, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { colors } from "../constants/colors";
+import { fonts } from "../constants/fonts";
 
 export default function WelcomeScreen() {
   const router = useRouter();
-  return (
-    <View style={styles.container}>
-      <View style={styles.logoContainer}>
-        <Image
-          style={styles.logo}
-          source={require("../../assets/project/images/ellipse.png")}
-        />
-      </View>
-      <View style={styles.titleContainer}>
-        <Text style={styles.title}>Hatch App</Text>
-        <Text style={styles.subtitle}>Match and Pool for Trips</Text>
-      </View>
-      <View style={styles.buttomContainer}>
-        <View style={styles.bodyImageContanier}>
-          <Image
-            style={styles.bodyImage1}
-            source={require("../../assets/project/images/car.png")}
-          />
-          <Image
-            style={styles.bodyImage2}
-            source={require("../../assets/project/images/moon.png")}
-          />
-        </View>
+  const loginPath = "/auth/login";
+  const registerPath = "/auth/register";
 
-        <View style={styles.buttonContainer}>
-          <CustomButton
-            background="#3475DE"
-            text="white"
-            onPress={() => router.push("/auth/register")}
-          >
-            Create Account
-          </CustomButton>
-          <CustomButton
-            background="#E6E8EB"
-            text="black"
-            onPress={() => router.push("/auth/login")}
-          >
-            Sign in
-          </CustomButton>
+  return (
+    <SafeAreaView style={{ flex: 1 }}>
+      <View style={styles.container}>
+        <View style={styles.logoContainer}>
+          <View style={styles.logo}></View>
+        </View>
+        <View style={styles.titleContainer}>
+          <Text style={styles.title}>Hatch App</Text>
+          <Text style={styles.subtitle}>Match and Pool for Trips</Text>
+        </View>
+        <View style={styles.buttomContainer}>
+          <View style={styles.bodyImageContainer}>
+            <ImageBackground
+              style={styles.bodyImage}
+              source={require("../../assets/project/images/car.png")}
+            />
+          </View>
+
+          <View style={styles.buttonContainer}>
+            <CustomButton
+              background={colors.primary}
+              text="white"
+              onPress={() => router.push(registerPath)}
+            >
+              Create Account
+            </CustomButton>
+            <CustomButton
+              background={colors.secondary}
+              text="black"
+              onPress={() => router.push(loginPath)}
+            >
+              Sign in
+            </CustomButton>
+          </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    position: "relative",
-    backgroundColor: "#F0F2F5",
   },
   logoContainer: {
     alignItems: "center",
@@ -63,35 +62,34 @@ const styles = StyleSheet.create({
   logo: {
     width: 120,
     height: 120,
+    backgroundColor: colors.secondary,
+    borderRadius: 60
   },
   titleContainer: {
     alignItems: "center",
     marginTop: 32,
   },
   title: {
+    fontFamily: fonts.medium_500,
     fontSize: 32,
     fontWeight: 500,
   },
   subtitle: {
+    fontFamily: fonts.regular_400,
     fontSize: 14,
     fontWeight: 400,
-    color: "#000000",
+    color: "black",
     opacity: 0.4,
   },
-  buttomContainer: {
-    height: 400,
-  },
-  bodyImageContanier: {},
-  bodyImage1: {
-    top: 160,
-    height: 200,
+  buttomContainer: {},
+  bodyImageContainer: {
     marginTop: 80,
   },
-  bodyImage2: {
-    height: 200,
-    top: 60,
+  bodyImage: {
+    height: 250,
   },
   buttonContainer: {
+    marginTop: 150,
     marginHorizontal: 16,
     gap: 6,
   },

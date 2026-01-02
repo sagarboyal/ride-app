@@ -1,3 +1,4 @@
+import { fonts } from "@/src/constants/fonts";
 import { ReactNode } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
@@ -39,6 +40,7 @@ const styles = StyleSheet.create({
   },
   button: {},
   text: {
+    fontFamily: fonts.medium_500,
     fontWeight: 500,
     fontSize: 18
   },
