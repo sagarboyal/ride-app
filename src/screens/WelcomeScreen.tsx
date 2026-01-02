@@ -1,4 +1,4 @@
-import CustomButton from "@/components/ui/CustomButton";
+import CustomButton from "@/src/components/ui/CustomButton";
 import { useRouter } from "expo-router";
 import React from "react";
 import { Image, StyleSheet, Text, View } from "react-native";

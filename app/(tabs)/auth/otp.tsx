@@ -1,4 +1,4 @@
-import OtpInputForm from "@/components/auth/OtpInputForm";
+import OtpInputForm from "@/src/components/auth/OtpInputForm";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
 

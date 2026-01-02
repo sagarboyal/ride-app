@@ -32,7 +32,7 @@ export default function PhoneForm() {
       </View>
       <View style={styles.box2}>
         <View style={styles.countryCode}>
-          <Image source={require("../../assets/project/images/flag.png")} />
+          <Image source={require("../../../assets/project/images/flag.png")} />
           <Text style={styles.code}>+91</Text>
         </View>
         <View style={styles.inputContainer}>

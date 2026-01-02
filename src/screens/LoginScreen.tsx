@@ -1,4 +1,4 @@
-import PhoneForm from "@/components/auth/PhoneForm";
+import PhoneForm from "@/src/components/auth/PhoneForm";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function LoginScreen() {

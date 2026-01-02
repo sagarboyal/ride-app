@@ -13,7 +13,7 @@ export default function OtpInputForm() {
         <Text style={styles.title}>Enter your code</Text>
         <View style={styles.description}>
           <Text>Sent to </Text>
-          <Text>+91 {phoneNumber}. </Text> <Text>{<CountdownTimer />}</Text>
+          <Text>+91 {phoneNumber}. {<CountdownTimer />}</Text> 
         </View>
       </View>
       <View style={styles.otpInputWrapper}>
