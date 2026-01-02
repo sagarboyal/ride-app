@@ -1,15 +1,27 @@
-import React from "react";
-import {
-  Image,
-  StyleSheet,
-  Text,
-  TextInput,
-  View
-} from "react-native";
+import { useRouter } from "expo-router";
+import React, { useState } from "react";
+import { Image, StyleSheet, Text, TextInput, View } from "react-native";
 import CustomButton from "../ui/CustomButton";
 import KeyboardWrapper from "./KeyboardWrapper";
 
 export default function PhoneForm() {
+  const router = useRouter();
+
+  const [phoneNumber, setPhoneNumber] = useState("");
+
+  function inputHandler(enteredNumber: string) {
+    setPhoneNumber(enteredNumber);
+  }
+
+  function continueButtonHandler() {
+    if(phoneNumber.length !== 10) return;
+    router.push({
+      pathname: "/auth/otp",
+      params: {
+        phoneNumber: phoneNumber
+      }
+    });
+  }
   return (
     <View style={styles.container}>
       <View style={styles.box1}>
@@ -28,6 +40,9 @@ export default function PhoneForm() {
             style={styles.input}
             placeholder="Enter phone number"
             keyboardType="phone-pad"
+            onChangeText={inputHandler}
+            value={phoneNumber}
+            maxLength={10}
           />
         </View>
       </View>
@@ -51,7 +66,7 @@ export default function PhoneForm() {
             <CustomButton
               background="#3475DE"
               text="#FFFFFF"
-              onPress={() => {}}
+              onPress={continueButtonHandler}
             >
               Continue
             </CustomButton>
