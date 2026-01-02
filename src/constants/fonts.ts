@@ -23,13 +23,13 @@ export const fontAssets = {
 };
 
 export const fonts = {
-  thin: "Outfit_100Thin",
-  extraLight: "Outfit_200ExtraLight",
-  light: "Outfit_300Light",
-  regular: "Outfit_400Regular",
-  medium: "Outfit_500Medium",
-  semiBold: "Outfit_600SemiBold",
-  bold: "Outfit_700Bold",
-  extraBold: "Outfit_800ExtraBold",
-  black: "Outfit_900Black"
+  thin_100: "Outfit_100Thin",
+  extraLight_200: "Outfit_200ExtraLight",
+  light_300: "Outfit_300Light",
+  regular_400: "Outfit_400Regular",
+  medium_500: "Outfit_500Medium",
+  semiBold_600: "Outfit_600SemiBold",
+  bold_700: "Outfit_700Bold",
+  extraBold_800: "Outfit_800ExtraBold",
+  black_900: "Outfit_900Black"
 };
