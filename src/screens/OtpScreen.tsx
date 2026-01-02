@@ -12,7 +12,10 @@ import { fonts } from "../constants/fonts";
 export default function OtpScreen() {
   const router = useRouter();
   const [otpValue, setOtpValue] = useState("");
-  const { phoneNumber } = useLocalSearchParams<{ phoneNumber: string }>();
+  const { phoneNumber, email } = useLocalSearchParams<{
+    phoneNumber?: string;
+    email?: string;
+  }>();
 
   const handleOtpComplete = (otp: string) => {
     setOtpValue(otp);
@@ -20,13 +23,13 @@ export default function OtpScreen() {
 
   const validateOtp = async () => {
     if (otpValue === "111111") {
-       router.push("/auth/email");
+      router.push("/auth/email");
     } else {
       console.log("OTP INVALID");
     }
   };
 
-  function continueButtonHandler(){
+  function continueButtonHandler() {
     validateOtp();
   }
 
@@ -38,12 +41,12 @@ export default function OtpScreen() {
           <View style={styles.descriptionWrapper}>
             <Text style={[styles.description, { opacity: 0.4 }]}>Sent to </Text>
             <Text style={[styles.description, { opacity: 0.6 }]}>
-              +91 {phoneNumber}.{" "}
+              {phoneNumber ? `+91 ${phoneNumber}` : email}.{" "}
             </Text>
-            <Text style={[styles.description, , { opacity: 0.4 }]}>
+            {phoneNumber && <Text style={[styles.description, , { opacity: 0.4 }]}>
               Resend OTP in{" "}
               {<CountdownTimer duration={30} style={styles.description} />}
-            </Text>
+            </Text>}
           </View>
         </View>
         <View style={styles.otpInputWrapper}>
