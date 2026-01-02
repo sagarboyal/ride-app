@@ -1,8 +1,16 @@
 import { useEffect, useState } from "react";
-import { Text } from "react-native";
+import { StyleProp, Text, TextStyle } from "react-native";
 
-export default function CountdownTimer() {
-  const [seconds, setSeconds] = useState(30);
+type CountdownTimerProps = {
+  duration?: number;  
+  style?: StyleProp<TextStyle>;
+};
+
+export default function CountdownTimer({
+  duration = 30,
+  style,
+}: CountdownTimerProps) {
+  const [seconds, setSeconds] = useState(duration);
 
   useEffect(() => {
     if (seconds === 0) return;
@@ -14,5 +22,5 @@ export default function CountdownTimer() {
     return () => clearInterval(timer);
   }, [seconds]);
 
-  return <Text>Resend OTP in {seconds}s</Text>;
+  return <Text style={style}>{seconds}s</Text>;
 }

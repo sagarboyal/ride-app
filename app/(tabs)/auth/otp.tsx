@@ -1,11 +1,6 @@
-import OtpInputForm from "@/src/components/auth/OtpInputForm";
+import OtpScreen from "@/src/screens/OtpScreen";
 import React from "react";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function otp() {
-  return (
-    <SafeAreaView style={{ flex: 1 }}>
-      <OtpInputForm />
-    </SafeAreaView>
-  );
+  return <OtpScreen />;
 }
