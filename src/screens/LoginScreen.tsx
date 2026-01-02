@@ -1,6 +1,13 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Image, StyleSheet, Text, TextInput, View } from "react-native";
+import {
+  Image,
+  Keyboard,
+  StyleSheet,
+  Text,
+  TextInput,
+  View,
+} from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import KeyboardWrapper from "../components/auth/KeyboardWrapper";
 import CustomButton from "../components/ui/CustomButton";
@@ -17,6 +24,7 @@ export default function LoginScreen() {
   }
 
   function continueButtonHandler() {
+    Keyboard.dismiss();
     if (phoneNumber.length !== 10) return;
     router.push({
       pathname: "/auth/otp",

@@ -1,6 +1,6 @@
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { StyleSheet, Text, TextInput, View } from "react-native";
+import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import KeyboardWrapper from "../components/auth/KeyboardWrapper";
 import CustomButton from "../components/ui/CustomButton";
@@ -26,6 +26,7 @@ export default function EmailScreen() {
   }
 
   function continueButtonHandler() {
+    Keyboard.dismiss();
     if(!isValidEmail) return;
     router.push({
       pathname: "/auth/otp",
