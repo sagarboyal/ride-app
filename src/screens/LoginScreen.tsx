@@ -116,7 +116,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     gap: 2,
-    backgroundColor: "#E6E8EB",
+    backgroundColor: colors.secondary,
     borderRadius: 12,
     paddingHorizontal: 12,
     marginVertical: 2,
@@ -129,7 +129,7 @@ const styles = StyleSheet.create({
   },
   inputContainer: {
     justifyContent: "center",
-    backgroundColor: "#E6E8EB",
+    backgroundColor: colors.secondary,
     borderRadius: 12,
     width: "76%",
     marginVertical: 2,
@@ -156,7 +156,7 @@ const styles = StyleSheet.create({
     fontFamily: fonts.regular_400,
     fontSize: 14,
     fontWeight: "400",
-    color: "#000000",
+    color: "black",
   },
   button: {},
 });
