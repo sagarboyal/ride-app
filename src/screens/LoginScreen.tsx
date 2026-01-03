@@ -13,6 +13,7 @@ import KeyboardWrapper from "../components/auth/KeyboardWrapper";
 import CustomButton from "../components/ui/CustomButton";
 import { colors } from "../constants/colors";
 import { fonts } from "../constants/fonts";
+import { images } from "../constants/images";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -44,7 +45,7 @@ export default function LoginScreen() {
         </View>
         <View style={styles.inputWrapper}>
           <View style={styles.countryCode}>
-            <Image source={require("../../assets/project/images/flag.png")} />
+            <Image source={images.flag} />
             <Text style={styles.code}>+91</Text>
           </View>
           <View style={styles.inputContainer}>

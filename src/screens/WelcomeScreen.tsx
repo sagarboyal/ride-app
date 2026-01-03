@@ -5,6 +5,7 @@ import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import { colors } from "../constants/colors";
 import { fonts } from "../constants/fonts";
+import { images } from "../constants/images";
 
 export default function WelcomeScreen() {
   const router = useRouter();
@@ -25,7 +26,7 @@ export default function WelcomeScreen() {
           <View style={styles.bodyImageContainer}>
             <ImageBackground
               style={styles.bodyImage}
-              source={require("../../assets/project/images/car.png")}
+              source={images.car}
             />
           </View>
 
