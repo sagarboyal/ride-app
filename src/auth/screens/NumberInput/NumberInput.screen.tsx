@@ -1,19 +1,13 @@
+import { Paths } from "@/src/shared/constants/paths";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import {
-  Image,
-  Keyboard,
-  StyleSheet,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { Image, Keyboard, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomButton from "../../shared/components/CustomButton";
-import KeyboardWrapper from "../../shared/components/KeyboardWrapper";
-import { colors } from "../../shared/constants/colors";
-import { fonts } from "../../shared/constants/fonts";
-import { images } from "../../shared/constants/images";
+import CustomButton from "../../../shared/components/CustomButton";
+import KeyboardWrapper from "../../../shared/components/KeyboardWrapper";
+import { colors } from "../../../shared/constants/colors";
+import { images } from "../../../shared/constants/images";
+import { styles } from "./NumberInput.styles";
 
 export default function LoginScreen() {
   const router = useRouter();
@@ -28,7 +22,7 @@ export default function LoginScreen() {
     Keyboard.dismiss();
     if (phoneNumber.length !== 10) return;
     router.push({
-      pathname: "/otp",
+      pathname: Paths.OTP,
       params: {
         phoneNumber: phoneNumber,
       },
@@ -75,14 +69,13 @@ export default function LoginScreen() {
                 </Text>
               </View>
             </View>
-            <View style={styles.button}>
+            <View>
               <CustomButton
+                title="Continue"
                 background={colors.primary}
-                text={colors.secondary}
+                style={styles.buttonText}
                 onPress={continueButtonHandler}
-              >
-                Continue
-              </CustomButton>
+              />
             </View>
           </View>
         </KeyboardWrapper>
@@ -90,82 +83,3 @@ export default function LoginScreen() {
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-  header: {
-    height: 57,
-    marginTop: 80,
-    marginHorizontal: 30,
-    gap: 6,
-  },
-  title: {
-    fontFamily: fonts.medium_500,
-    fontSize: 24,
-    fontWeight: "500",
-  },
-  description: {
-    fontFamily: fonts.regular_400,
-    fontSize: 16,
-    fontWeight: 400,
-    opacity: 0.4,
-    marginHorizontal: 2,
-  },
-  inputWrapper: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    height: 57,
-    marginTop: 32,
-    marginHorizontal: 16,
-  },
-  countryCode: {
-    flexDirection: "row",
-    justifyContent: "center",
-    alignItems: "center",
-    gap: 2,
-    backgroundColor: colors.secondary,
-    borderRadius: 12,
-    paddingHorizontal: 12,
-    marginVertical: 2,
-  },
-  code: {
-    fontFamily: fonts.regular_400,
-    fontSize: 16,
-    fontWeight: 400,
-    marginLeft: 3,
-  },
-  inputContainer: {
-    justifyContent: "center",
-    backgroundColor: colors.secondary,
-    borderRadius: 12,
-    width: "76%",
-    marginVertical: 2,
-    marginHorizontal: 12,
-  },
-  input: {
-    fontFamily: fonts.regular_400,
-    fontSize: 16,
-    paddingLeft: 16,
-    paddingVertical: 12,
-  },
-  footer: {
-    position: "absolute",
-    bottom: 0,
-    width: "95%",
-    marginHorizontal: 12,
-    gap: 12,
-    paddingBottom: 20,
-  },
-  lineContainer: {
-    alignItems: "center",
-  },
-  lineText: {
-    fontFamily: fonts.regular_400,
-    fontSize: 14,
-    fontWeight: "400",
-    color: "black",
-  },
-  button: {},
-});

@@ -1,11 +1,11 @@
+import CustomButton from "@/src/shared/components/CustomButton";
+import KeyboardWrapper from "@/src/shared/components/KeyboardWrapper";
+import { colors } from "@/src/shared/constants/colors";
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
+import { Keyboard, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CustomButton from "../../shared/components/CustomButton";
-import KeyboardWrapper from "../../shared/components/KeyboardWrapper";
-import { colors } from "../../shared/constants/colors";
-import { fonts } from "../../shared/constants/fonts";
+import { styles } from "./EmailInput.style";
 
 export default function EmailScreen() {
   const router = useRouter();
@@ -21,13 +21,13 @@ export default function EmailScreen() {
     }
   };
 
-  function inputHandler(enteredEmail: string){
+  function inputHandler(enteredEmail: string) {
     setEmail(enteredEmail);
   }
 
   function continueButtonHandler() {
     Keyboard.dismiss();
-    if(!isValidEmail) return;
+    if (!isValidEmail) return;
     router.push({
       pathname: "/otp",
       params: {
@@ -36,7 +36,7 @@ export default function EmailScreen() {
     });
   }
   return (
-    <SafeAreaView style={{ flex: 1 }}>
+    <SafeAreaView style={styles.screen}>
       <View style={styles.screen}>
         <View style={styles.header}>
           <Text style={styles.title}>What is your email?</Text>
@@ -58,62 +58,14 @@ export default function EmailScreen() {
         <KeyboardWrapper>
           <View style={styles.footer}>
             <CustomButton
+              title="Continue"
               background={colors.primary}
-              text={colors.secondary}
+              style={styles.buttonText}
               onPress={continueButtonHandler}
-            >
-              Continue
-            </CustomButton>
+            />
           </View>
         </KeyboardWrapper>
       </View>
     </SafeAreaView>
   );
 }
-
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-  header: {
-    height: 57,
-    marginTop: 80,
-    marginHorizontal: 30,
-    gap: 6,
-  },
-  title: {
-    fontFamily: fonts.medium_500,
-    fontSize: 24,
-    fontWeight: "500",
-  },
-  description: {
-    fontFamily: fonts.regular_400,
-    fontSize: 16,
-    fontWeight: 400,
-    opacity: 0.4,
-    marginHorizontal: 2,
-  },
-  inputWrapper: {
-    height: 57,
-    marginTop: 32,
-    marginHorizontal: 12,
-  },
-  input: {
-    fontFamily: fonts.regular_400,
-    fontSize: 16,
-    fontWeight: 400,
-    opacity: 0.5,
-    backgroundColor: colors.secondary,
-    borderRadius: 12,
-    padding: 12,
-    marginHorizontal: 10,
-  },
-  footer: {
-    position: "absolute",
-    bottom: 0,
-    width: "95%",
-    marginHorizontal: 12,
-    gap: 12,
-    paddingBottom: 20,
-  },
-});

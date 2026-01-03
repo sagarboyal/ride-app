@@ -1,14 +1,14 @@
 import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import Toast from "react-native-toast-message";
-import CustomButton from "../../shared/components/CustomButton";
-import KeyboardWrapper from "../../shared/components/KeyboardWrapper";
-import { colors } from "../../shared/constants/colors";
-import { fonts } from "../../shared/constants/fonts";
-import CountdownTimer from "../components/CountdownTimer";
-import OtpInput from "../components/OtpInput";
+import CustomButton from "../../../shared/components/CustomButton";
+import KeyboardWrapper from "../../../shared/components/KeyboardWrapper";
+import { colors } from "../../../shared/constants/colors";
+import CountdownTimer from "../../components/CountdownTimer";
+import OtpInput from "../../components/OtpInput";
+import { styles } from "./OtpVerification.styles";
 
 export default function OtpScreen() {
   const router = useRouter();
@@ -18,10 +18,6 @@ export default function OtpScreen() {
     email?: string;
   }>();
   const forwardPath = phoneNumber ? "/email" : "/name";
-
-  const handleOtpComplete = (otp: string) => {
-    setOtpValue(otp);
-  };
 
   const validateOtp = async () => {
     if (otpValue === "111111") {
@@ -60,18 +56,17 @@ export default function OtpScreen() {
         </View>
         <View style={styles.otpInputWrapper}>
           <View style={styles.otpInput}>
-            <OtpInput onComplete={handleOtpComplete} />
+            <OtpInput onComplete={setOtpValue} />
           </View>
         </View>
         <KeyboardWrapper>
           <View style={styles.footer}>
             <CustomButton
+              title="Continue"
               background={colors.primary}
-              text={colors.secondary}
+              style={styles.buttonText}
               onPress={continueButtonHandler}
-            >
-              Continue
-            </CustomButton>
+            />
           </View>
         </KeyboardWrapper>
       </View>
@@ -79,43 +74,4 @@ export default function OtpScreen() {
   );
 }
 
-const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-  },
-  header: {
-    height: 57,
-    marginTop: 80,
-    marginHorizontal: 30,
-    gap: 6,
-  },
-  title: {
-    fontFamily: fonts.medium_500,
-    fontSize: 24,
-    fontWeight: "500",
-  },
-  descriptionWrapper: {
-    flexDirection: "row",
-  },
-  description: {
-    fontFamily: fonts.regular_400,
-    fontSize: 16,
-    fontWeight: 400,
-  },
-  otpInputWrapper: {
-    marginHorizontal: 20,
-    height: 62,
-    marginTop: 32,
-  },
-  otpInput: {
-    marginHorizontal: 6,
-  },
-  footer: {
-    position: "absolute",
-    bottom: 0,
-    width: "95%",
-    marginHorizontal: 12,
-    gap: 12,
-    paddingBottom: 20,
-  },
-});
+
