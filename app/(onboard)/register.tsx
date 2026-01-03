@@ -1,4 +1,4 @@
-import LoginScreen from '@/src/screens/LoginScreen'
+import LoginScreen from '@/src/auth/screens/NumberInputScreen'
 import React from 'react'
 
 export default function register() {

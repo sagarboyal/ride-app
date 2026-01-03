@@ -2,12 +2,12 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import CountdownTimer from "../components/auth/CountdownTimer";
-import KeyboardWrapper from "../components/auth/KeyboardWrapper";
-import CustomButton from "../components/ui/CustomButton";
-import OtpInput from "../components/ui/OtpInput";
-import { colors } from "../constants/colors";
-import { fonts } from "../constants/fonts";
+import CustomButton from "../../shared/components/CustomButton";
+import KeyboardWrapper from "../../shared/components/KeyboardWrapper";
+import { colors } from "../../shared/constants/colors";
+import { fonts } from "../../shared/constants/fonts";
+import CountdownTimer from "../components/CountdownTimer";
+import OtpInput from "../components/OtpInput";
 
 export default function OtpScreen() {
   const router = useRouter();
@@ -16,6 +16,7 @@ export default function OtpScreen() {
     phoneNumber?: string;
     email?: string;
   }>();
+  const forwardPath = phoneNumber ? "/email" : "/name";
 
   const handleOtpComplete = (otp: string) => {
     setOtpValue(otp);
@@ -23,7 +24,7 @@ export default function OtpScreen() {
 
   const validateOtp = async () => {
     if (otpValue === "111111") {
-      router.push("/auth/email");
+      router.push(forwardPath);
     } else {
       console.log("OTP INVALID");
     }

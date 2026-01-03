@@ -1,4 +1,4 @@
-import EmailScreen from '@/src/screens/EmailScreen'
+import EmailScreen from '@/src/onboarding/screens/EmailInputScreen'
 import React from 'react'
 
 export default function email() {

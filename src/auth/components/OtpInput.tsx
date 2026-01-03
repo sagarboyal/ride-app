@@ -1,5 +1,5 @@
-import { colors } from "@/src/constants/colors";
-import { fonts } from "@/src/constants/fonts";
+import { colors } from "@/src/shared/constants/colors";
+import { fonts } from "@/src/shared/constants/fonts";
 import { useEffect, useRef, useState } from "react";
 import {
   Pressable,

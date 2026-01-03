@@ -2,10 +2,10 @@ import { useRouter } from "expo-router";
 import { useState } from "react";
 import { Keyboard, StyleSheet, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import KeyboardWrapper from "../components/auth/KeyboardWrapper";
-import CustomButton from "../components/ui/CustomButton";
-import { colors } from "../constants/colors";
-import { fonts } from "../constants/fonts";
+import CustomButton from "../../shared/components/CustomButton";
+import KeyboardWrapper from "../../shared/components/KeyboardWrapper";
+import { colors } from "../../shared/constants/colors";
+import { fonts } from "../../shared/constants/fonts";
 
 export default function EmailScreen() {
   const router = useRouter();
@@ -29,7 +29,7 @@ export default function EmailScreen() {
     Keyboard.dismiss();
     if(!isValidEmail) return;
     router.push({
-      pathname: "/auth/otp",
+      pathname: "/otp",
       params: {
         email: email,
       },

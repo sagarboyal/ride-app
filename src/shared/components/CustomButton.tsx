@@ -1,4 +1,4 @@
-import { fonts } from "@/src/constants/fonts";
+import { fonts } from "@/src/shared/constants/fonts";
 import { ReactNode } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 

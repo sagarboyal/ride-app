@@ -1,16 +1,15 @@
-import CustomButton from "@/src/components/ui/CustomButton";
+import CustomButton from "@/src/shared/components/CustomButton";
 import { useRouter } from "expo-router";
 import React from "react";
 import { ImageBackground, StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { colors } from "../constants/colors";
-import { fonts } from "../constants/fonts";
-import { images } from "../constants/images";
+import { colors } from "../../shared/constants/colors";
+import { fonts } from "../../shared/constants/fonts";
+import { images } from "../../shared/constants/images";
 
 export default function WelcomeScreen() {
   const router = useRouter();
-  const loginPath = "/auth/login";
-  const registerPath = "/auth/register";
+  const forwardPath = "/phone";
 
   return (
     <SafeAreaView style={{ flex: 1 }}>
@@ -34,14 +33,14 @@ export default function WelcomeScreen() {
             <CustomButton
               background={colors.primary}
               text="white"
-              onPress={() => router.push(registerPath)}
+              onPress={() => router.push(forwardPath)}
             >
               Create Account
             </CustomButton>
             <CustomButton
               background={colors.secondary}
               text="black"
-              onPress={() => router.push(loginPath)}
+              onPress={() => router.push(forwardPath)}
             >
               Sign in
             </CustomButton>
