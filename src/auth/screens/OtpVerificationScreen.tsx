@@ -2,6 +2,7 @@ import { useLocalSearchParams, useRouter } from "expo-router";
 import React, { useState } from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import Toast from "react-native-toast-message";
 import CustomButton from "../../shared/components/CustomButton";
 import KeyboardWrapper from "../../shared/components/KeyboardWrapper";
 import { colors } from "../../shared/constants/colors";
@@ -26,7 +27,12 @@ export default function OtpScreen() {
     if (otpValue === "111111") {
       router.push(forwardPath);
     } else {
-      console.log("OTP INVALID");
+      Toast.show({
+        type: "invalidOtpError",
+        text1: "Invalid OTP !!",
+        position: 'top',
+        topOffset: 60
+      });
     }
   };
 
@@ -44,10 +50,12 @@ export default function OtpScreen() {
             <Text style={[styles.description, { opacity: 0.6 }]}>
               {phoneNumber ? `+91 ${phoneNumber}` : email}.{" "}
             </Text>
-            {phoneNumber && <Text style={[styles.description, , { opacity: 0.4 }]}>
-              Resend OTP in{" "}
-              {<CountdownTimer duration={30} style={styles.description} />}
-            </Text>}
+            {phoneNumber && (
+              <Text style={[styles.description, , { opacity: 0.4 }]}>
+                Resend OTP in{" "}
+                {<CountdownTimer duration={30} style={styles.description} />}
+              </Text>
+            )}
           </View>
         </View>
         <View style={styles.otpInputWrapper}>
