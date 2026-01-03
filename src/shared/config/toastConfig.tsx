@@ -20,11 +20,20 @@ export const toastConfig = {
       }}
     >
       <View style={{ flex: 1 }}>
-        <Text style={{ color: "#fff", fontSize: 16, fontWeight: "700" }}>
+        <Text style={{ 
+          fontFamily: fonts.bold_700,  
+          color: "#fff", 
+          fontSize: 16 
+        }}>
           {text1}
         </Text>
         {text2 && (
-          <Text style={{ color: "#fff", fontSize: 14, marginTop: 4 }}>
+          <Text style={{ 
+            fontFamily: fonts.regular_400,
+            color: "#fff", 
+            fontSize: 14, 
+            marginTop: 4 
+          }}>
             {text2}
           </Text>
         )}
@@ -76,11 +85,20 @@ export const toastConfig = {
         elevation: 5,
       }}
     >
-      <Text style={{ color: "#fff", fontSize: 16, fontWeight: "700" }}>
+      <Text style={{ 
+        fontFamily: fonts.bold_700,  
+        color: "#fff", 
+        fontSize: 16 
+      }}>
         {text1}
       </Text>
       {text2 && (
-        <Text style={{ color: "#fff", fontSize: 14, marginTop: 4 }}>
+        <Text style={{ 
+          fontFamily: fonts.regular_400,  
+          color: "#fff", 
+          fontSize: 14, 
+          marginTop: 4 
+        }}>
           {text2}
         </Text>
       )}
