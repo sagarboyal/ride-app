@@ -31,8 +31,7 @@ export const styles = StyleSheet.create({
   },
   otpInput: {
     marginHorizontal: 6,
-    borderColor: "black",
-    borderWidth: 2
+    
   },
   footer: {
     position: "absolute",
