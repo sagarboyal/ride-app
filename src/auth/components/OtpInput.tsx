@@ -17,13 +17,18 @@ export default function OtpInput({ onComplete }: Props) {
   const [otp, setOtp] = useState(Array(6).fill(""));
   const [focused, setFocused] = useState<number | null>(null);
   const inputRef = useRef<(TextInput | null)[]>([]);
+
+  const isDigit = /^[0-9]$/;
   
-  const isDigit = /^[0-9]^/;
   const handleChange = (text: string, index: number) => {
+    if (text !== "" && !isDigit.test(text)) {
+      return;
+    }
+
     const newOtp = [...otp];
     newOtp[index] = text;
     setOtp(newOtp);
-    
+
     if (text !== "" && index < otp.length - 1) {
       inputRef.current[index + 1]?.focus();
     }
@@ -39,13 +44,25 @@ export default function OtpInput({ onComplete }: Props) {
     e: NativeSyntheticEvent<{ key: string }>,
     index: number
   ) => {
-    if (e.nativeEvent.key === "Backspace" && otp[index] === "" && index > 0) {
+    const key = e.nativeEvent.key;
+
+    if (key === "Backspace" && otp[index] === "" && index > 0) {
       inputRef.current[index - 1]?.focus();
-    }else if(isDigit.test(e.nativeEvent.key) && otp[index] !==''){
+    }
+    else if (isDigit.test(key) && otp[index] !== "") {
       const newOtp = [...otp];
-      newOtp[index] = e.nativeEvent.key;
+      newOtp[index] = key;
       setOtp(newOtp);
-      inputRef.current[index + 1]?.focus();
+
+      if (index < otp.length - 1) {
+        inputRef.current[index + 1]?.focus();
+      } else {
+        const otpString = newOtp.join("");
+        if (newOtp.every((digit) => digit !== "")) {
+          inputRef.current[index]?.blur();
+          onComplete?.(otpString);
+        }
+      }
     }
   };
 
@@ -79,9 +96,7 @@ export default function OtpInput({ onComplete }: Props) {
               selectionColor={colors.primary || "#000000"}
               caretHidden={!isFocused}
             />
-            {hasValue && !isFocused && (
-              <Text style={styles.asterisk}>*</Text>
-            )}
+            {hasValue && !isFocused && <Text style={styles.asterisk}>*</Text>}
           </View>
         );
       })}
