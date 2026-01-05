@@ -15,7 +15,6 @@ export const styles = StyleSheet.create({
   title: {
     fontFamily: fonts.medium_500,
     fontSize: 24,
-    fontWeight: "500",
   },
   description: {
     fontFamily: fonts.regular_400,
@@ -25,7 +24,7 @@ export const styles = StyleSheet.create({
   },
   inputWrapper: {
     height: 57,
-    marginTop: 32,
+    marginTop: 50,
     marginHorizontal: 12,
   },
   input: {
@@ -37,7 +36,7 @@ export const styles = StyleSheet.create({
     padding: 12,
     marginHorizontal: 10,
   },
-  buttonText: {
+    buttonText: {
     fontFamily: fonts.medium_500,
     fontSize: 18,
     color: colors.secondary,

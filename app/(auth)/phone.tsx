@@ -1,5 +1,4 @@
-import LoginScreen from "@/src/auth/screens/NumberInput/NumberInput.screen";
-import React from "react";
+import LoginScreen from "@/src/auth/screens/NumberInput/NumberInputScreen";
 
 export default function login() {
   return <LoginScreen />;

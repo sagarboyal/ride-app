@@ -20,7 +20,6 @@ export const styles = StyleSheet.create({
   description: {
     fontFamily: fonts.regular_400,
     fontSize: 16,
-    fontWeight: 400,
     opacity: 0.4,
     marginHorizontal: 2,
   },
@@ -32,7 +31,6 @@ export const styles = StyleSheet.create({
   input: {
     fontFamily: fonts.regular_400,
     fontSize: 16,
-    fontWeight: 400,
     opacity: 0.5,
     backgroundColor: colors.secondary,
     borderRadius: 12,

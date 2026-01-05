@@ -1,5 +1,4 @@
-import NameInputScreen from '@/src/onboarding/screens/NameInputScreen'
-import React from 'react'
+import NameInputScreen from '@/src/onboarding/screens/NameInput/NameInputScreen'
 
 export default function name() {
   return (
