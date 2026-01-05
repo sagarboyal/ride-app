@@ -1,5 +1,6 @@
 import { images } from "@/src/shared/constants/images";
-import React, { useRef, useState } from "react";
+import { debounce } from "lodash";
+import React, { useState } from "react";
 import {
   FlatList,
   Image,
@@ -15,8 +16,6 @@ import { nearbyPlaces } from "./dummyData";
 export default function CreateAddressScreen() {
   const [query, setQuery] = useState("");
   const [places, setPlaces] = useState(nearbyPlaces);
-
-  const timeoutRef = useRef<number | null>(null);
 
   const setTitleImage = (icon: string) => {
     switch (icon) {
@@ -47,17 +46,17 @@ export default function CreateAddressScreen() {
     );
   };
 
-  const debouncedSearch = (text: string) => {
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-    timeoutRef.current = setTimeout(() => {
-      searchPlaces(text);
-    }, 500) as unknown as number;
-  };
+  const debouncedSearch = debounce((text: string) => {
+    searchPlaces(text);
+  }, 500);
 
   const queryHandler = (enteredQuery: string) => {
     setQuery(enteredQuery);
+    if (!enteredQuery.trim()) {
+      setPlaces(nearbyPlaces);
+      debouncedSearch.cancel();
+      return;
+    }
     debouncedSearch(enteredQuery);
   };
 
@@ -69,7 +68,6 @@ export default function CreateAddressScreen() {
       <View style={styles.addressButtonWrapper}>
         <Pressable style={styles.button}>
           <Image style={styles.buttonIcon} source={images.marker} />
-          {/* <Text style={styles.buttonText}>Current Location</Text> */}
           <TextInput
             style={styles.buttonText}
             placeholder="Search places"
