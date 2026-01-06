@@ -41,7 +41,7 @@ export default function WelcomeScreen() {
               title="Sign in"
               background={colors.secondary}
               style={[styles.buttonText, { color: "#000000" }]}
-              onPress={forwardPath}
+              onPress={() => router.push(Paths.HOME)}
             />
           </View>
         </View>
