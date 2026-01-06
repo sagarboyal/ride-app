@@ -7,4 +7,5 @@ export const images = {
   home: require("../../../assets/project/images/home/home-03.png"),
   briefcase: require("../../../assets/project/images/home/briefcase-01.png"),
   forward: require("../../../assets/project/images/home/chevron-right.png"),
+  defaultProfile: require("../../../assets/project/images/home/profile.png"),
 } as const;
