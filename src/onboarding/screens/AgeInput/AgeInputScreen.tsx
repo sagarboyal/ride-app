@@ -9,7 +9,7 @@ import { styles } from "./AgeInput.styles";
 
 export default function AgeInputScreen() {
   const router = useRouter();
-  const forwardPath = "/";
+  const forwardPath = "/add";
   const [age, setAge] = useState("");
 
   function inputHandler(enteredAge: string) {
@@ -43,7 +43,7 @@ export default function AgeInputScreen() {
         <KeyboardWrapper>
           <View style={styles.footer}>
             <CustomButton
-              title="continue"
+              title="Continue"
               background={colors.primary}
               style={styles.buttonText}
               onPress={continueButtonHandler}
