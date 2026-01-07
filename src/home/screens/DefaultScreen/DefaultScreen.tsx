@@ -27,7 +27,7 @@ export default function DefaultScreen() {
       case "airplane":
         return (
           <Ionicons
-            style={styles.tripRequestIcon}
+            style={styles.tripRequestLeftIcon}
             name="airplane-outline"
             size={24}
           />
@@ -35,7 +35,7 @@ export default function DefaultScreen() {
       case "briefcase":
         return (
           <Ionicons
-            style={styles.tripRequestIcon}
+            style={styles.tripRequestLeftIcon}
             name="briefcase-outline"
             size={24}
           />
@@ -43,7 +43,7 @@ export default function DefaultScreen() {
       default:
         return (
           <AntDesign
-            style={styles.tripRequestIcon}
+            style={styles.tripRequestLeftIcon}
             name="clock-circle"
             size={24}
           />
@@ -105,54 +105,39 @@ export default function DefaultScreen() {
       <View style={styles.contentSection}>
         <Text style={styles.contentTitle}>Trips Requests</Text>
         <View style={styles.tripRequestList}>
-          {/* <View style={styles.tripRequestItem}>
-            <AntDesign
-              style={styles.tripRequestIcon}
-              name="clock-circle"
-              size={24}
-            />
-            <View style={styles.tripRequestTextGroup}>
-              <Text style={styles.tripRequestTitle}>Lal Bagh Palace</Text>
-              <Text style={styles.tripRequestSubtitle}>Tomorrow, 5:45 PM</Text>
-            </View>
-            <View style={styles.tripRequestCountBadge}>
-              <Text style={styles.tripRequestCountText}>3</Text>
-            </View>
-          </View>
-          <View style={styles.separator}></View> */}
           <FlatList
             data={request}
             keyExtractor={(item) => item.id}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
             renderItem={({ item }) => {
               return (
-                <>
-                  <Pressable style={styles.tripRequestItem}>
+                <Pressable style={styles.tripRequestItem}>
+                  <View style={styles.tripRequestLeftIcon}>
                     {renderIcons(item.icon)}
-                    <View style={styles.tripRequestTextGroup}>
-                      <Text style={styles.tripRequestTitle}>{item.place}</Text>
-                      <Text style={styles.tripRequestSubtitle}>
-                        {item.time}
-                      </Text>
-                    </View>
-                    <View
+                  </View>
+
+                  <View style={styles.tripRequestTextGroup}>
+                    <Text style={styles.tripRequestTitle}>{item.place}</Text>
+                    <Text style={styles.tripRequestSubtitle}>{item.time}</Text>
+                  </View>
+
+                  <View
+                    style={[
+                      styles.tripRequestCountBadge,
+                      !item.seen && styles.tripRequestCountBadgeSeen,
+                    ]}
+                  >
+                    <Text
                       style={[
-                        styles.tripRequestCountBadge,
-                        !item.seen && styles.tripRequestCountBadgeSeen,
+                        styles.tripRequestCountText,
+                        !item.seen && styles.tripRequestCountTextSeen,
+                        item.requestCount === 0 && { opacity: 0.4 },
                       ]}
                     >
-                      <Text
-                        style={[
-                          styles.tripRequestCountText,
-                          !item.seen && styles.tripRequestCountTextSeen,
-                          item.requestCount === 0 && { opacity: 0.4 },
-                        ]}
-                      >
-                        {item.requestCount}
-                      </Text>
-                    </View>
-                  </Pressable>
-                  <View style={styles.separator}></View>
-                </>
+                      {item.requestCount}
+                    </Text>
+                  </View>
+                </Pressable>
               );
             }}
           />

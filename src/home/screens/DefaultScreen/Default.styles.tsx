@@ -89,7 +89,10 @@ export const styles = StyleSheet.create({
     marginHorizontal: 16,
     alignItems: "center",
   },
-  tripRequestIcon: {
+  tripRequestLeftIconWrapper: {
+    alignItems: "center",
+  },
+  tripRequestLeftIcon: {
     marginRight: 12,
   },
   tripRequestTextGroup: {
@@ -109,8 +112,8 @@ export const styles = StyleSheet.create({
     width: 32,
     height: 32,
     borderRadius: 10,
-    justifyContent: 'center',
-    alignItems: 'center'
+    justifyContent: "center",
+    alignItems: "center",
   },
   tripRequestCountBadgeSeen: {
     backgroundColor: colors.primary,
@@ -119,10 +122,9 @@ export const styles = StyleSheet.create({
     fontFamily: fonts.medium_500,
     fontSize: 16,
     textAlign: "center",
-    padding: 6.5,
   },
   tripRequestCountTextSeen: {
-    color: 'white'
+    color: "white",
   },
   separator: {
     backgroundColor: colors.secondary,
