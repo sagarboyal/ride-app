@@ -1,3 +1,12 @@
+export type TripRequest = {
+  id: string;
+  icon: string; 
+  place: string;
+  time: string;
+  requestCount: number;
+  seen: boolean;
+};
+
 export const tripRequests = [
   {
     id: "1",

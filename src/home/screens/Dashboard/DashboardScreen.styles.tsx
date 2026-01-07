@@ -5,36 +5,14 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   screen: {
     flex: 1,
+    paddingTop: 50
   },
-  header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginHorizontal: 25,
-    marginVertical: 2,
-  },
-  headerAvatar: {
-    borderColor: "black",
-    borderWidth: 2,
-    borderRadius: 50,
-    padding: 2,
-  },
-  headerTitle: { flex: 1, alignItems: "center" },
-  headerTitleText: {
-    fontFamily: fonts.medium_500,
-    textAlign: "center",
-    fontSize: 20,
-  },
-  headerActionButton: {
-    backgroundColor: colors.secondary,
-    borderRadius: 10,
-  },
-
   searchSection: {
     marginHorizontal: 12,
     height: 124,
     justifyContent: "center",
     gap: 6,
-    marginVertical: 8,
+    marginTop: 20,
   },
   searchInputContainer: {
     flexDirection: "row",
@@ -54,6 +32,7 @@ export const styles = StyleSheet.create({
     justifyContent: "space-evenly",
     height: 38,
     gap: 10,
+    marginVertical: 4
   },
   searchQuickAction: {
     flex: 1,

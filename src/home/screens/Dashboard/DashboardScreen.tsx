@@ -1,26 +1,32 @@
-import { images } from "@/src/shared/constants/images";
 import {
   AntDesign,
   Feather,
   Ionicons,
   MaterialIcons,
 } from "@expo/vector-icons";
-import React, { useState } from "react";
-import {
-  FlatList,
-  Image,
-  Pressable,
-  Text,
-  TextInput,
-  View,
-} from "react-native";
+import { useNavigation } from "expo-router";
+import React, { useLayoutEffect, useState } from "react";
+import { FlatList, Pressable, Text, TextInput, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { styles } from "./Default.styles";
+import { DashboardHeader } from "../../components/navigation/DashboardHeader";
+import { styles } from "./DashboardScreen.styles";
 import { tripRequests } from "./dummyData";
 
-export default function DefaultScreen() {
+export default function DashboardScreen() {
   const [request, setRequest] = useState(tripRequests);
+  const navigation = useNavigation();
   const username = "deepam";
+
+  useLayoutEffect(() => {
+    navigation.setOptions(
+      DashboardHeader({
+        username,
+        onRightPress: () => {
+          console.log("Action pressed");
+        },
+      })
+    );
+  }, [navigation, username]);
 
   const renderIcons = (name: string) => {
     switch (name.toLowerCase()) {
@@ -52,20 +58,6 @@ export default function DefaultScreen() {
   };
   return (
     <SafeAreaView style={styles.screen}>
-      <View style={styles.header}>
-        <View style={styles.headerAvatar}>
-          <Image source={images.defaultProfile} />
-        </View>
-        <View style={styles.headerTitle}>
-          <Text style={styles.headerTitleText}>
-            hello, {username.toLowerCase()}!
-          </Text>
-        </View>
-        <Pressable style={styles.headerActionButton}>
-          <AntDesign name="exclamation-circle" size={24} />
-        </Pressable>
-      </View>
-
       <View style={styles.searchSection}>
         <View style={styles.searchInputContainer}>
           <TextInput
