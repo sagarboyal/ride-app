@@ -4,4 +4,6 @@ export const Paths = {
   EMAIL: "/email",
   NAME: "/name",
   AGE: "/age",
+  ADD: "/add",
+  HOME: "/home"
 } as const;

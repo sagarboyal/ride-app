@@ -1,0 +1,168 @@
+import {
+  AntDesign,
+  Feather,
+  Ionicons,
+  MaterialIcons,
+} from "@expo/vector-icons";
+import { useNavigation } from "expo-router";
+import React, { useLayoutEffect, useState } from "react";
+import { FlatList, Pressable, Text, TextInput, View } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+import { DashboardHeader } from "../../components/navigation/DashboardHeader";
+import { styles } from "./DashboardScreen.styles";
+import { tripRequests } from "./dummyData";
+
+export default function DashboardScreen() {
+  const [request, setRequest] = useState(tripRequests);
+  const navigation = useNavigation();
+  const username = "deepam";
+
+  useLayoutEffect(() => {
+    navigation.setOptions(
+      DashboardHeader({
+        username,
+        onRightPress: () => {
+          console.log("Action pressed");
+        },
+      })
+    );
+  }, [navigation, username]);
+
+  const renderIcons = (name: string) => {
+    switch (name.toLowerCase()) {
+      case "airplane":
+        return (
+          <Ionicons
+            style={styles.tripRequestLeftIcon}
+            name="airplane-outline"
+            size={24}
+          />
+        );
+      case "briefcase":
+        return (
+          <Ionicons
+            style={styles.tripRequestLeftIcon}
+            name="briefcase-outline"
+            size={24}
+          />
+        );
+      default:
+        return (
+          <AntDesign
+            style={styles.tripRequestLeftIcon}
+            name="clock-circle"
+            size={24}
+          />
+        );
+    }
+  };
+  return (
+    <SafeAreaView style={styles.screen}>
+      <View style={styles.searchSection}>
+        <View style={styles.searchInputContainer}>
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Where are we going?"
+          />
+          <Ionicons name="search" size={26} />
+        </View>
+        <View style={styles.searchQuickActions}>
+          <View style={styles.searchQuickAction}>
+            <Ionicons
+              style={styles.searchQuickActionIcon}
+              name="home-outline"
+              size={14}
+            />
+            <Text style={styles.searchQuickActionText}>Home</Text>
+          </View>
+          <View style={styles.searchQuickAction}>
+            <Ionicons
+              style={styles.searchQuickActionIcon}
+              name="briefcase-outline"
+              size={14}
+            />
+            <Text style={styles.searchQuickActionText}>Work</Text>
+          </View>
+          <View style={styles.searchQuickAction}>
+            <Ionicons
+              style={styles.searchQuickActionIcon}
+              name="star-outline"
+              size={14}
+            />
+            <Text style={styles.searchQuickActionText}>Saved</Text>
+          </View>
+        </View>
+      </View>
+
+      <View style={styles.contentSection}>
+        <Text style={styles.contentTitle}>Trips Requests</Text>
+        <View style={styles.tripRequestList}>
+          <FlatList
+            data={request}
+            keyExtractor={(item) => item.id}
+            ItemSeparatorComponent={() => <View style={styles.separator} />}
+            renderItem={({ item }) => {
+              return (
+                <Pressable style={styles.tripRequestItem}>
+                  <View style={styles.tripRequestLeftIcon}>
+                    {renderIcons(item.icon)}
+                  </View>
+
+                  <View style={styles.tripRequestTextGroup}>
+                    <Text style={styles.tripRequestTitle}>{item.place}</Text>
+                    <Text style={styles.tripRequestSubtitle}>{item.time}</Text>
+                  </View>
+
+                  <View
+                    style={[
+                      styles.tripRequestCountBadge,
+                      !item.seen && styles.tripRequestCountBadgeSeen,
+                    ]}
+                  >
+                    <Text
+                      style={[
+                        styles.tripRequestCountText,
+                        !item.seen && styles.tripRequestCountTextSeen,
+                        item.requestCount === 0 && { opacity: 0.4 },
+                      ]}
+                    >
+                      {item.requestCount}
+                    </Text>
+                  </View>
+                </Pressable>
+              );
+            }}
+          />
+        </View>
+      </View>
+
+      <View style={styles.footer}>
+        <View style={styles.footerCard}>
+          <View style={styles.footerAction}>
+            <Feather
+              name="arrow-down-left"
+              style={styles.footerActionIcon}
+              size={24}
+            />
+          </View>
+          <View style={styles.footerDetails}>
+            <View style={styles.footerDetailsHeader}>
+              <Text style={styles.footerDetailsTitle}>
+                {username.charAt(0).toUpperCase() + username.slice(1)} sent a
+                request
+              </Text>
+              <MaterialIcons name="keyboard-arrow-right" size={20} />
+            </View>
+            <Text style={styles.footerDetailsSubtitle}>
+              Balasaheb 302 Rd, Tripti Marg
+            </Text>
+          </View>
+          <View style={styles.footerMatch}>
+            <Text style={styles.footerMatchValue}>72%</Text>
+            <Text style={styles.footerMatchLabel}>Match</Text>
+          </View>
+        </View>
+      </View>
+    </SafeAreaView>
+  );
+}

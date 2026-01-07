@@ -50,7 +50,7 @@ export const styles = StyleSheet.create({
   },
   middleSection: {
     flex: 1,
-    marginHorizontal: 10,
+    marginHorizontal: 12,
   },
   rightSection: {
     marginHorizontal: 6,
